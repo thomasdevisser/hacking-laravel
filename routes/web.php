@@ -15,3 +15,5 @@ use App\Http\Controllers\Example;
 */
 
 Route::get('/', [Example::class, "homepage"]);
+
+Route::get('/post', [Example::class, "post"]);

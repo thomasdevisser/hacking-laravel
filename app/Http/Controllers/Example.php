@@ -7,18 +7,10 @@ use Illuminate\Http\Request;
 class Example extends Controller
 {
     public function homepage() {
-        $pageTitle = 'Homepage | Laravel';
-        $posts = [
-            "Hello Laravel",
-            "Learning Blade",
-            "Controllers are cool"
-        ];
+        return view("home-guest");
+    }
 
-        $payload = [
-            'pageTitle' => $pageTitle,
-            'posts' => $posts
-        ];
-
-        return view("homepage", $payload);
+    public function post() {
+        return view("single-post");
     }
 }
