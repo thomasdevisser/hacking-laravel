@@ -4,7 +4,7 @@
     @csrf
     <div class="form-group">
       <label for="register-username">Username</label>
-      <input type="text" name="username" id="register-username" placeholder="Pick a username" autocomplete="off">
+      <input value="{{old('username')}}" type="text" name="username" id="register-username" placeholder="Pick a username" autocomplete="off">
       @error('username')
           <small>{{ $message }}</small>
       @enderror
@@ -12,7 +12,7 @@
 
     <div class="form-group">
       <label for="register-email">Email</label>
-      <input type="text" name="email" id="register-email" placeholder="you@example.com" autocomplete="off">
+      <input value="{{old('email')}}" type="text" name="email" id="register-email" placeholder="you@example.com" autocomplete="off">
       @error('email')
           <small>{{ $message }}</small>
       @enderror
