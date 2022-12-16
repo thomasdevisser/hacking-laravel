@@ -10,11 +10,22 @@
 <body>
   <header>
     <a href="/"><h1>HackingLaravel</h1></a>
-    <form action="#" method="POST">
-      <input type="text" name="login-username" placeholder="Username" autocomplete="off">
-      <input type="password" name="login-password" placeholder="Password">
-      <button>Sign In</button>
-    </form>
+    @auth
+      <a href="#">Search</a>
+      <a href="#">Chat</a>
+      <img src="" alt="Profile Image">
+      <a href="#">Create Post</a>
+      <form action="#" method="POST">
+        <button>Sign Out</button>
+      </form>   
+    @else
+      <form action="/login" method="POST">
+        @csrf
+        <input type="text" value="{{old('login-username')}}" name="login-username" placeholder="Username" autocomplete="off">
+        <input type="password" name="login-password" placeholder="Password">
+        <button>Sign In</button>
+      </form>
+    @endauth
   </header>
 
   <main>
