@@ -29,6 +29,10 @@
     @endauth
   </header>
 
+  @if (session()->has('success'))
+    <div><p>{{ session('success') }}</p></div>
+  @endif
+
   <main>
     {{ $slot }}
   </main>

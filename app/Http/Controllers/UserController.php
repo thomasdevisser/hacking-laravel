@@ -48,22 +48,22 @@ class UserController extends Controller
 
         if (auth()->attempt($loginCredentials)) {
             $request->session()->regenerate();
-            return view("home-no-results");
+            return redirect('/')->with('success', 'You are now logged in.');
         } else {
-            return "Wrong pass!";
+            return 'Wrong pass!';
         }
     }
 
     public function logout(Request $request) {
         auth()->logout();
-        return redirect("/");
+        return redirect('/')->with('success', 'You are now logged out.');
     }
 
     public function homepage(Request $request) {
         if (auth()->check()) {
-            return view("home-no-results");
+            return view('home-no-results');
         } else {
-            return view("home-guest");
+            return view('home-guest');
         }
     }
 }
