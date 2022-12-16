@@ -1,8 +1,58 @@
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding-inline: 1rem;
+}
+
+a:has(#site-title) {
+    color: black;
+    text-decoration: none;
+}
+
+#site-title {
+    font-size: 1.5rem;
+}
+
 .form-group {
     margin: 0.5rem 0 1rem;
 }
 
-input {
+main input {
     display: block;
     margin: 0.5rem 0 0;
+}
+
+.site-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.menu form {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dismissable {
+    border-radius: 2px;
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+}
+
+.dismissable.failure {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid red;
+    color: red;
+}
+
+.dismissable.success {
+    background: rgba(0, 128, 0, 0.1);
+    border: 1px solid green;
+    color: green;
 }

@@ -9,40 +9,48 @@
 </head>
 <body>
   <header>
-    <a href="/"><h1>HackingLaravel</h1></a>
-    @auth
-      <a href="#">Search</a>
-      <a href="#">Chat</a>
-      <img src="" alt="Profile Image">
-      <a href="#">Create Post</a>
-      <form action="/logout" method="POST">
-        @csrf
-        <button>Sign Out</button>
-      </form>   
-    @else
-      <form action="/login" method="POST">
-        @csrf
-        <input type="text" value="{{old('login-username')}}" name="login-username" placeholder="Username" autocomplete="off">
-        <input type="password" name="login-password" placeholder="Password">
-        <button>Sign In</button>
-      </form>
-    @endauth
+    <div class="site-header container">
+      <a href="/"><h1 id="site-title">HackingLaravel</h1></a>
+      <div class="menu">
+        @auth
+          <a href="#">Search</a>
+          <a href="#">Chat</a>
+          <img src="" alt="Profile Image">
+          <a href="#">Create Post</a>
+          <form action="/logout" method="POST">
+            @csrf
+            <button>Sign Out</button>
+          </form>   
+        @else
+          <form action="/login" method="POST">
+            @csrf
+            <input type="text" value="{{old('login-username')}}" name="login-username" placeholder="Username" autocomplete="off">
+            <input type="password" name="login-password" placeholder="Password">
+            <button>Sign In</button>
+          </form>
+        @endauth
+      </div>
+    </div>
   </header>
 
-  @if (session()->has('success'))
-    <div><p>{{ session('success') }}</p></div>
-  @endif
-
-  @if (session()->has('failure'))
-    <div><p>{{ session('failure') }}</p></div>
-  @endif
-
   <main>
-    {{ $slot }}
+    <div class="container">
+      @if (session()->has('success'))
+        <span class="dismissable success">{{ session('success') }}</span>
+      @endif
+
+      @if (session()->has('failure'))
+        <span class="dismissable failure">{{ session('failure') }}</span>
+      @endif
+
+      {{ $slot }}
+    </div>
   </main>
 
   <footer>
-    <p>Copyright &copy; {{ date('Y') }}</p>
+    <div class="container">
+      <p>Copyright &copy; {{ date('Y') }}</p>
+    </div>
   </footer>
 </body>
 </html>
