@@ -54,8 +54,13 @@ class UserController extends Controller
         }
     }
 
+    public function logout(Request $request) {
+        auth()->logout();
+        return redirect("/");
+    }
+
     public function homepage(Request $request) {
-        if ( auth()->check() ) {
+        if (auth()->check()) {
             return view("home-no-results");
         } else {
             return view("home-guest");

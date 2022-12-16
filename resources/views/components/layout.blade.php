@@ -15,7 +15,8 @@
       <a href="#">Chat</a>
       <img src="" alt="Profile Image">
       <a href="#">Create Post</a>
-      <form action="#" method="POST">
+      <form action="/logout" method="POST">
+        @csrf
         <button>Sign Out</button>
       </form>   
     @else
