@@ -17,7 +17,8 @@ a:has(#site-title) {
     margin: 0.5rem 0 1rem;
 }
 
-main input {
+main input,
+main textarea {
     display: block;
     margin: 0.5rem 0 0;
 }
@@ -55,4 +56,8 @@ main input {
     background: rgba(0, 128, 0, 0.1);
     border: 1px solid green;
     color: green;
+}
+
+textarea {
+    font-family: "Arial";
 }

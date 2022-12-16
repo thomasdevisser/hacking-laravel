@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -14,7 +15,16 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [UserController::class, "homepage"]);
-Route::post('/register', [UserController::class, "register"]);
-Route::post('/login', [UserController::class, "login"]);
-Route::post('/logout', [UserController::class, "logout"]);
+/**
+ * User Routes
+ */
+Route::get('/', [UserController::class, 'homepage']);
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout']);
+
+/**
+ * Post Routes
+ */
+Route::get('/create-post', [PostController::class, 'renderForm']);
+Route::post('/create-post', [PostController::class, 'create']);
