@@ -33,6 +33,10 @@
     <div><p>{{ session('success') }}</p></div>
   @endif
 
+  @if (session()->has('failure'))
+    <div><p>{{ session('failure') }}</p></div>
+  @endif
+
   <main>
     {{ $slot }}
   </main>

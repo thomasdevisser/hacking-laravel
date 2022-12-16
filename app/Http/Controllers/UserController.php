@@ -31,8 +31,9 @@ class UserController extends Controller
 
         $incomingFields['password'] = bcrypt($incomingFields['password']);
 
-        User::create($incomingFields);
-        return "Registered!";
+        $user = User::create($incomingFields);
+        auth()->login($user);
+        return redirect('/')->with('success', 'Thanks for signing up. You are now logged in');
     }
 
     public function login(Request $request) {
@@ -50,7 +51,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect('/')->with('success', 'You are now logged in.');
         } else {
-            return 'Wrong pass!';
+            return redirect('/')->with('failure', 'Invalid credentials.' );
         }
     }
 
@@ -61,7 +62,7 @@ class UserController extends Controller
 
     public function homepage(Request $request) {
         if (auth()->check()) {
-            return view('home-no-results');
+            return view('home');
         } else {
             return view('home-guest');
         }
