@@ -23,6 +23,10 @@ main textarea {
     margin: 0.5rem 0 0;
 }
 
+textarea {
+    font-family: "Arial";
+}
+
 .site-header {
     align-items: center;
     display: flex;
@@ -40,24 +44,52 @@ main textarea {
     gap: 0.5rem;
 }
 
-.dismissable {
+.error,
+.success {
     border-radius: 2px;
     display: inline-block;
     padding: 0.25rem 0.5rem;
 }
 
-.dismissable.failure {
+small {
+    margin-block: 0.2rem;
+}
+
+.error {
     background: rgba(255, 0, 0, 0.1);
     border: 1px solid red;
     color: red;
 }
 
-.dismissable.success {
+.success {
     background: rgba(0, 128, 0, 0.1);
     border: 1px solid green;
     color: green;
 }
 
-textarea {
-    font-family: "Arial";
+article header {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+}
+
+article header h2 {
+    margin-bottom: 0.5rem;
+}
+
+article header .meta {
+    align-items: center;
+    display: flex;
+    font-size: 0.875rem;
+    gap: 1rem;
+}
+
+article header .meta p {
+    margin: 0;
+}
+
+article header .actions {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
 }

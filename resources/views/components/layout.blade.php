@@ -39,8 +39,8 @@
         <span class="dismissable success">{{ session('success') }}</span>
       @endif
 
-      @if (session()->has('failure'))
-        <span class="dismissable failure">{{ session('failure') }}</span>
+      @if (session()->has('error'))
+        <span class="dismissable error">{{ session('error') }}</span>
       @endif
 
       {{ $slot }}

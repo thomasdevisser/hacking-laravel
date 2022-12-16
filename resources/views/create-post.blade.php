@@ -6,7 +6,7 @@
       <label for="post-title">Post Title</label>
       <input value="{{old('title')}}" type="text" name="title" id="post-title" placeholder="Post title" autocomplete="off">
       @error('title')
-        <small>{{ $message }}</small>
+        <small class="error">{{ $message }}</small>
       @enderror
     </div>
 
@@ -14,7 +14,7 @@
       <label for="post-body">Post Body</label>
       <textarea name="body" id="post-body" placeholder="What's on your mind..." rows="6" cols="30">{{old('body')}}</textarea>
       @error('body')
-        <small>{{ $message }}</small>
+        <small class="error">{{ $message }}</small>
       @enderror
     </div>
 

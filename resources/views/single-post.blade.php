@@ -1,18 +1,23 @@
 <x-layout>
-  <h2>Post Title Here</h2>
-  <a href="#">Edit</a>
-  <form action="#" method="POST">
-    <button>Delete</button>
-  </form>
+  <article>
+    <header>
+      <div class="title">
+        <h2>{{ $post->title }}</h2>
+        <div class="meta">
+          <a href="#"><img src="" alt="Profile Image"></a>
+          <p>Posted by <a href="mailto:{{ $post->user->email }}">{{ $post->user->username }}</a> on {{ $post->created_at->format('j-n-Y') }}</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a href="#">Edit</a>
+        <form action="#" method="POST">
+          <button>Delete</button>
+        </form>
+      </div>
+    </header>
 
-  <p>
-    <a href="#"><img src="" alt="Profile Image"></a>
-    Posted by <a href="#">user</a> on 14/12/2022
-  </p>
-
-  <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, eaque? Necessitatibus quibusdam tempora fugiat, labore laborum error quas deleniti, soluta ratione nobis nam, velit voluptates suscipit unde minima. Ducimus, voluptate.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, eaque? Necessitatibus quibusdam tempora fugiat, labore laborum error quas deleniti, soluta ratione nobis nam, velit voluptates suscipit unde minima. Ducimus, voluptate.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, eaque? Necessitatibus quibusdam tempora fugiat, labore laborum error quas deleniti, soluta ratione nobis nam, velit voluptates suscipit unde minima. Ducimus, voluptate.</p>
-  </div>
+    <main>
+      <p>{{ $post->body }}</p>
+    </main>
+  </article>
 </x-layout>
