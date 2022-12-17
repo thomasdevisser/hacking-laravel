@@ -9,10 +9,16 @@
         </div>
       </div>
       <div class="actions">
-        <a href="#">Edit</a>
-        <form action="#" method="POST">
-          <button>Delete</button>
-        </form>
+        @can('update', $post)
+          <a href="/posts/{{$post->id}}/edit">Edit</a>
+        @endcan
+        @can('delete', $post)
+          <form action="/posts/{{$post->id}}" method="POST">
+            @method('DELETE')
+            @csrf
+            <button>Delete</button>
+          </form> 
+        @endcan
       </div>
     </header>
 

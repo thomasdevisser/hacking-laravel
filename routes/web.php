@@ -27,8 +27,11 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
  * Post Routes
  */
 Route::get('/create-post', [PostController::class, 'renderForm'])->middleware('auth');
-Route::get('/posts/{post}', [PostController::class, 'renderPost']);
 Route::post('/create-post', [PostController::class, 'create'])->middleware('auth');
+Route::get('/posts/{post}', [PostController::class, 'renderPost']);
+Route::delete('/posts/{post}', [PostController::class, 'delete'])->middleware('can:delete,post');
+Route::get('/posts/{post}/edit', [PostController::class, 'renderEditForm'])->middleware('can:update,post');
+Route::put('/posts/{post}/edit', [PostController::class, 'update'])->middleware('can:update,post');
 
 /**
  * Profile Routes
