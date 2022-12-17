@@ -17,7 +17,7 @@
     </header>
 
     <main>
-      <p>{{ $post->body }}</p>
+      <p>{!! $post->body !!}</p>
     </main>
   </article>
 </x-layout>
