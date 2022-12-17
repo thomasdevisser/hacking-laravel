@@ -10,10 +10,10 @@
       </div>
       <div class="actions">
         @can('update', $post)
-          <a href="/posts/{{$post->id}}/edit">Edit</a>
+          <a href="/posts/{{ $post->id }}/edit">Edit</a>
         @endcan
         @can('delete', $post)
-          <form action="/posts/{{$post->id}}" method="POST">
+          <form action="/posts/{{ $post->id }}" method="POST">
             @method('DELETE')
             @csrf
             <button>Delete</button>

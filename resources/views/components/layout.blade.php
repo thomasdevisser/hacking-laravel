@@ -15,7 +15,7 @@
         @auth
           <a href="#">Search</a>
           <a href="#">Chat</a>
-          <a href="/profile/{{auth()->user()->username}}"><img src="" alt="Profile Image"></a>
+          <a href="/profile/{{ auth()->user()->username }}"><img src="" alt="Profile Image"></a>
           <a href="/create-post">Create Post</a>
           <form action="/logout" method="POST">
             @csrf
@@ -24,7 +24,7 @@
         @else
           <form action="/login" method="POST">
             @csrf
-            <input type="text" value="{{old('login-username')}}" name="login-username" placeholder="Username" autocomplete="off">
+            <input type="text" value="{{ old('login-username') }}" name="login-username" placeholder="Username" autocomplete="off">
             <input type="password" name="login-password" placeholder="Password">
             <button>Sign In</button>
           </form>
