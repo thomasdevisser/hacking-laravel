@@ -15,7 +15,7 @@
         @auth
           <a href="#">Search</a>
           <a href="#">Chat</a>
-          <img src="" alt="Profile Image">
+          <a href="/profile/{{auth()->user()->username}}"><img src="" alt="Profile Image"></a>
           <a href="/create-post">Create Post</a>
           <form action="/logout" method="POST">
             @csrf

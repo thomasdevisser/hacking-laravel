@@ -67,4 +67,13 @@ class UserController extends Controller
             return view('home-guest');
         }
     }
+
+    public function renderProfile(User $user) {
+        $posts = $user->posts()->get();
+        return view('profile', [
+            'username' => $user->username,
+            'posts' => $posts,
+            'postCount' => $posts->count()
+        ]);
+    }
 }
