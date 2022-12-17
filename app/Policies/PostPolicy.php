@@ -65,6 +65,8 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
+        if ($user->is_admin) return true;
+
         return $user->id === $post->user_id;
     }
 

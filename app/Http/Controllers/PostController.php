@@ -45,7 +45,7 @@ class PostController extends Controller
 
     public function delete(Post $post) {
         $post->delete();
-        return redirect('/profile/' . auth()->user()->username)->with('success', 'Post deleted successfully!');
+        return redirect('/profile/' . $post->user->username)->with('success', 'Post deleted successfully!');
     }
 
     public function update(Post $post, Request $request) {

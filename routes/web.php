@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/**
+ * Admin Routes
+ */
+Route::get('admin', [AdminController::class, 'dashboard'])->middleware('can:visitAdminPages');
 
 /**
  * User Routes
