@@ -18,14 +18,14 @@ use App\Http\Controllers\UserController;
 /**
  * User Routes
  */
-Route::get('/', [UserController::class, 'homepage']);
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
-Route::post('/logout', [UserController::class, 'logout']);
+Route::get('/', [UserController::class, 'homepage'])->name('login');
+Route::post('/register', [UserController::class, 'register'])->middleware('guest');
+Route::post('/login', [UserController::class, 'login'])->middleware('guest');
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 /**
  * Post Routes
  */
-Route::get('/create-post', [PostController::class, 'renderForm']);
+Route::get('/create-post', [PostController::class, 'renderForm'])->middleware('auth');
 Route::get('/posts/{post}', [PostController::class, 'renderPost']);
-Route::post('/create-post', [PostController::class, 'create']);
+Route::post('/create-post', [PostController::class, 'create'])->middleware('auth');
