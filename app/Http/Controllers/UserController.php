@@ -96,8 +96,15 @@ class UserController extends Controller
         $imageData = Image::make($request->file('profile-image'))->fit(120)->encode('jpg');
         Storage::put("public/profile-images/$filename", $imageData);
 
+        $currentImage = $user->avatar;
+
         $user->avatar = $filename;
         $user->save();
+
+        if ($currentImage != "/storage/profile-images/fallback-profile-image.jpeg") {
+            $imagePath = str_replace('/storage/', 'public/', $currentImage);
+            Storage::delete($imagePath);
+        }
 
         return redirect("/profile/$user->username")->with('success', 'Profile image updated successfully!');
     }

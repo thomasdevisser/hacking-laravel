@@ -103,6 +103,12 @@ article header .meta p {
     margin: 0;
 }
 
+article header .meta img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
 article header .actions {
     align-items: center;
     display: flex;

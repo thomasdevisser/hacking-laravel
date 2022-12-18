@@ -4,7 +4,7 @@
       <div class="title">
         <h2>{{ $post->title }}</h2>
         <div class="meta">
-          <a href="/profile/{{ $post->user->username }}"><img src="" alt="Profile Image"></a>
+          <a href="/profile/{{ $post->user->username }}"><img src="{{ $post->user->avatar }}" alt="Profile Image"></a>
           <p>Posted by <a href="/profile/{{ $post->user->username }}">{{ $post->user->username }}</a> on {{ $post->created_at->format('j-n-Y') }}</p>
         </div>
       </div>
