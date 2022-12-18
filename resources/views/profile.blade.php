@@ -1,6 +1,6 @@
 <x-layout>
   <div class="profile-header">
-    <img src="/storage/profile-images/{{ $avatar }}" alt="Profile Image">
+    <img src="{{ $avatar }}" alt="Profile Image">
     <h1>{{ $username }}</h1>
     <form action="#" method="POST">
       <button>Follow</button>
