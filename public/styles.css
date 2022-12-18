@@ -37,6 +37,17 @@ textarea {
     justify-content: space-between;
 }
 
+.site-header .menu {
+    align-items: center;
+    display: flex;
+}
+
+.site-header .menu img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
 .menu {
     display: flex;
     gap: 1rem;
@@ -102,6 +113,12 @@ article header .actions {
     align-items: center;
     display: flex;
     gap: 1rem;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
 }
 
 .profile-tabs {

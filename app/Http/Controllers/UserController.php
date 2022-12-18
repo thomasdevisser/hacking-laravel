@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -72,8 +74,31 @@ class UserController extends Controller
         $posts = $user->posts()->get();
         return view('profile', [
             'username' => $user->username,
+            'avatar' => $user->avatar,
             'posts' => $posts,
             'postCount' => $posts->count()
         ]);
+    }
+
+    public function renderProfileImageForm() {
+        return view('profile-image-form');
+    }
+
+    public function updateProfileImage(Request $request) {
+        $request->validate([
+            'profile-image' => 'required|image|max:3000',
+        ]);
+
+        $user = auth()->user();
+
+        $filename = $user->id . '-' . uniqid() . '.jpg';
+
+        $imageData = Image::make($request->file('profile-image'))->fit(120)->encode('jpg');
+        Storage::put("public/profile-images/$filename", $imageData);
+
+        $user->avatar = $filename;
+        $user->save();
+
+        return redirect("/profile/$user->username")->with('success', 'Profile image updated successfully!');
     }
 }

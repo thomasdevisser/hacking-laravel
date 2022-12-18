@@ -28,6 +28,8 @@ Route::get('/', [UserController::class, 'homepage'])->name('login');
 Route::post('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/login', [UserController::class, 'login'])->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+Route::get('/update-profile-image', [UserController::class, 'renderProfileImageForm']);
+Route::post('/update-profile-image', [UserController::class, 'updateProfileImage']);
 
 /**
  * Post Routes
