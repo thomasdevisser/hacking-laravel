@@ -3,10 +3,9 @@
     <img src="{{ $avatar }}" alt="Profile Image">
     <h1>{{ $username }}</h1>
     @if(auth()->user()->username != $username)
-      <form action="/follow/{{ $username }}" method="POST">
+      <form action="/{{ $isFollowing ? 'unfollow' : 'follow' }}/{{ $username }}" method="POST">
         @csrf
-        <button>Follow</button>
-        {{-- <button>Unfollow</button> --}}
+        <button>{{ $isFollowing ? 'Unfollow' : 'Follow' }}</button>
       </form>
     @endif
     @if(auth()->user()->username == $username)
