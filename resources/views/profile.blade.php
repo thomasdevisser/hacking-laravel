@@ -2,10 +2,13 @@
   <div class="profile-header">
     <img src="{{ $avatar }}" alt="Profile Image">
     <h1>{{ $username }}</h1>
-    <form action="#" method="POST">
-      <button>Follow</button>
-      {{-- <button>Unfollow</button> --}}
-    </form>
+    @if(auth()->user()->username != $username)
+      <form action="/follow/{{ $username }}" method="POST">
+        @csrf
+        <button>Follow</button>
+        {{-- <button>Unfollow</button> --}}
+      </form>
+    @endif
     @if(auth()->user()->username == $username)
       <a href="/update-profile-image">Update Profile Image</a>
     @endif

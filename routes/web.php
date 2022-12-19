@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,9 @@ Route::put('/posts/{post}/edit', [PostController::class, 'update'])->middleware(
  * Profile Routes
  */
 Route::get('/profile/{user:username}', [UserController::class, 'renderProfile']);
+
+/**
+ * Social Interactions
+ */
+Route::post('/follow/{user:username}', [SocialController::class, 'follow']);
+Route::post('/unfollow/{user:username}', [SocialController::class, 'unfollow']);
