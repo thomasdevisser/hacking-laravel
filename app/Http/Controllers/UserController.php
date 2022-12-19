@@ -80,6 +80,14 @@ class UserController extends Controller
                 ['followed_user', '=', $user->id]
             ])->count();
         }
+
+        $followerCount = Follow::where([
+            ['followed_user', '=', $user->id],
+        ])->count();
+
+        $followsCount = Follow::where([
+            ['user_id', '=', $user->id]
+        ])->count();
         
         $posts = $user->posts()->get();
         return view('profile', [
@@ -87,7 +95,9 @@ class UserController extends Controller
             'avatar' => $user->avatar,
             'posts' => $posts,
             'postCount' => $posts->count(),
-            'isFollowing' => $isFollowing
+            'isFollowing' => $isFollowing,
+            'followerCount' => $followerCount,
+            'followsCount' => $followsCount,
         ]);
     }
 

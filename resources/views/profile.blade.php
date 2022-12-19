@@ -15,8 +15,8 @@
 
   <div class="profile-tabs">
     <a href="">Posts: {{ $postCount }}</a>
-    <a href="">Followers: #</a>
-    <a href="">Following: #</a>
+    <a href="">Followers: {{ $followerCount }}</a>
+    <a href="">Following: {{ $followsCount }}</a>
   </div>
 
   <div class="post-group">
