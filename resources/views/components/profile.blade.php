@@ -1,4 +1,7 @@
 <x-layout>
+  @php
+    extract($sharedProfileData);
+  @endphp
   <div class="profile-header">
     <img src="{{ $avatar }}" alt="Profile Image">
     <h1>{{ $username }}</h1>

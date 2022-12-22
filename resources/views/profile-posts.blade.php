@@ -1,4 +1,4 @@
-<x-profile :avatar="$avatar" :username="$username" :postCount="$postCount" :followerCount="$followerCount" :followsCount="$followsCount">
+<x-profile :sharedProfileData="$sharedProfileData">
   <div class="post-group">
     @foreach ($posts as $post)
     <div class="post">

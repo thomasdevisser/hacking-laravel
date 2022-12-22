@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\View;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -71,7 +72,7 @@ class UserController extends Controller
         }
     }
 
-    public function renderProfile(User $user) {
+    private function getSharedProfileData($user) {
         $isFollowing = false;
 
         if (auth()->check()) {
@@ -88,75 +89,36 @@ class UserController extends Controller
         $followsCount = Follow::where([
             ['user_id', '=', $user->id]
         ])->count();
-        
-        $posts = $user->posts()->get();
-        return view('profile-posts', [
+
+        $postCount = $user->posts()->get()->count();
+
+        View::share('sharedProfileData', [
             'username' => $user->username,
             'avatar' => $user->avatar,
-            'posts' => $posts,
-            'postCount' => $posts->count(),
+            'postCount' => $postCount,
             'isFollowing' => $isFollowing,
             'followerCount' => $followerCount,
             'followsCount' => $followsCount,
+        ]);
+    }
+
+    public function renderProfile(User $user) {
+        $this->getSharedProfileData($user);
+        $posts = $user->posts()->get();
+
+        return view('profile-posts', [
+            'posts' => $posts,
         ]);
     }
 
     public function renderProfileFollowers(User $user) {
-        $isFollowing = false;
-
-        if (auth()->check()) {
-            $isFollowing = Follow::where([
-                ['user_id', '=', auth()->user()->id],
-                ['followed_user', '=', $user->id]
-            ])->count();
-        }
-
-        $followerCount = Follow::where([
-            ['followed_user', '=', $user->id],
-        ])->count();
-
-        $followsCount = Follow::where([
-            ['user_id', '=', $user->id]
-        ])->count();
-        
-        $posts = $user->posts()->get();
-        return view('profile-followers', [
-            'username' => $user->username,
-            'avatar' => $user->avatar,
-            'postCount' => $posts->count(),
-            'isFollowing' => $isFollowing,
-            'followerCount' => $followerCount,
-            'followsCount' => $followsCount,
-        ]);
+        $this->getSharedProfileData($user);
+        return view('profile-followers');
     }
 
     public function renderProfileFollowing(User $user) {
-        $isFollowing = false;
-
-        if (auth()->check()) {
-            $isFollowing = Follow::where([
-                ['user_id', '=', auth()->user()->id],
-                ['followed_user', '=', $user->id]
-            ])->count();
-        }
-
-        $followerCount = Follow::where([
-            ['followed_user', '=', $user->id],
-        ])->count();
-
-        $followsCount = Follow::where([
-            ['user_id', '=', $user->id]
-        ])->count();
-        
-        $posts = $user->posts()->get();
-        return view('profile-following', [
-            'username' => $user->username,
-            'avatar' => $user->avatar,
-            'postCount' => $posts->count(),
-            'isFollowing' => $isFollowing,
-            'followerCount' => $followerCount,
-            'followsCount' => $followsCount,
-        ]);
+        $this->getSharedProfileData($user);
+        return view('profile-following');
     }
 
     public function renderProfileImageForm() {
