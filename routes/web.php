@@ -46,6 +46,8 @@ Route::put('/posts/{post}/edit', [PostController::class, 'update'])->middleware(
  * Profile Routes
  */
 Route::get('/profile/{user:username}', [UserController::class, 'renderProfile']);
+Route::get('/profile/{user:username}/followers', [UserController::class, 'renderProfileFollowers']);
+Route::get('/profile/{user:username}/following', [UserController::class, 'renderProfileFollowing']);
 
 /**
  * Social Interactions

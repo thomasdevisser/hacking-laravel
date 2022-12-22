@@ -90,10 +90,68 @@ class UserController extends Controller
         ])->count();
         
         $posts = $user->posts()->get();
-        return view('profile', [
+        return view('profile-posts', [
             'username' => $user->username,
             'avatar' => $user->avatar,
             'posts' => $posts,
+            'postCount' => $posts->count(),
+            'isFollowing' => $isFollowing,
+            'followerCount' => $followerCount,
+            'followsCount' => $followsCount,
+        ]);
+    }
+
+    public function renderProfileFollowers(User $user) {
+        $isFollowing = false;
+
+        if (auth()->check()) {
+            $isFollowing = Follow::where([
+                ['user_id', '=', auth()->user()->id],
+                ['followed_user', '=', $user->id]
+            ])->count();
+        }
+
+        $followerCount = Follow::where([
+            ['followed_user', '=', $user->id],
+        ])->count();
+
+        $followsCount = Follow::where([
+            ['user_id', '=', $user->id]
+        ])->count();
+        
+        $posts = $user->posts()->get();
+        return view('profile-followers', [
+            'username' => $user->username,
+            'avatar' => $user->avatar,
+            'postCount' => $posts->count(),
+            'isFollowing' => $isFollowing,
+            'followerCount' => $followerCount,
+            'followsCount' => $followsCount,
+        ]);
+    }
+
+    public function renderProfileFollowing(User $user) {
+        $isFollowing = false;
+
+        if (auth()->check()) {
+            $isFollowing = Follow::where([
+                ['user_id', '=', auth()->user()->id],
+                ['followed_user', '=', $user->id]
+            ])->count();
+        }
+
+        $followerCount = Follow::where([
+            ['followed_user', '=', $user->id],
+        ])->count();
+
+        $followsCount = Follow::where([
+            ['user_id', '=', $user->id]
+        ])->count();
+        
+        $posts = $user->posts()->get();
+        return view('profile-following', [
+            'username' => $user->username,
+            'avatar' => $user->avatar,
             'postCount' => $posts->count(),
             'isFollowing' => $isFollowing,
             'followerCount' => $followerCount,

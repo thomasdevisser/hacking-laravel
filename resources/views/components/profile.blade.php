@@ -14,16 +14,12 @@
   </div>
 
   <div class="profile-tabs">
-    <a href="">Posts: {{ $postCount }}</a>
-    <a href="">Followers: {{ $followerCount }}</a>
-    <a href="">Following: {{ $followsCount }}</a>
+    <a href="/profile/{{$username}}">Posts: {{ $postCount }}</a>
+    <a href="/profile/{{$username}}/followers">Followers: {{ $followerCount }}</a>
+    <a href="/profile/{{$username}}/following">Following: {{ $followsCount }}</a>
   </div>
 
-  <div class="post-group">
-    @foreach ($posts as $post)
-    <div class="post">
-      <p><a href="/posts/{{ $post->id }}"><strong>{{ $post->title }}</strong> posted on {{ $post->created_at->format('j-n-Y') }}</a></p>
-    </div>
-    @endforeach
+  <div class="profile-content">
+    {{ $slot }}
   </div>
 </x-layout>
