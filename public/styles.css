@@ -146,3 +146,26 @@ article header .actions {
     display: flex;
     gap: 1rem;
 }
+
+.feed .post img {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.feed .post .meta {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+}
+
+.feed .post .meta a {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+}
+
+.feed .post .meta .author {
+    margin: 0;
+}

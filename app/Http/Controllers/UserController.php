@@ -66,7 +66,9 @@ class UserController extends Controller
 
     public function homepage(Request $request) {
         if (auth()->check()) {
-            return view('home');
+            return view('home', [
+                'feed' => auth()->user()->feed()->latest()->get()
+            ]);
         } else {
             return view('home-guest');
         }

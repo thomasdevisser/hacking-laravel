@@ -60,4 +60,15 @@ class User extends Authenticatable
     public function following() {
         return $this->hasMany(Follow::class, 'user_id');
     }
+
+    public function feed() {
+        return $this->hasManyThrough(
+            Post::class, // end table
+            Follow::class, // intermediate table
+            'user_id', // foreign key for intermediate table
+            'user_id', // foreign key for end table
+            'id', // local key
+            'followed_user' // local key for intermediate table
+        );
+    }
 }
