@@ -132,3 +132,17 @@ article header .actions {
     gap: 1rem;
     margin-bottom: 1rem;
 }
+
+.followed img,
+.follower img {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.followed a,
+.follower a {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+}
