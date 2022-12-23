@@ -82,14 +82,8 @@ class UserController extends Controller
             ])->count();
         }
 
-        $followerCount = Follow::where([
-            ['followed_user', '=', $user->id],
-        ])->count();
-
-        $followsCount = Follow::where([
-            ['user_id', '=', $user->id]
-        ])->count();
-
+        $followerCount = $user->followers()->get()->count();
+        $followsCount = $user->following()->get()->count();
         $postCount = $user->posts()->get()->count();
 
         View::share('sharedProfileData', [
@@ -113,12 +107,16 @@ class UserController extends Controller
 
     public function renderProfileFollowers(User $user) {
         $this->getSharedProfileData($user);
-        return view('profile-followers');
+        return view('profile-followers', [
+            'followers' => $user->followers()->get(),
+        ]);
     }
 
     public function renderProfileFollowing(User $user) {
         $this->getSharedProfileData($user);
-        return view('profile-following');
+        return view('profile-following', [
+            'following' => $user->following()->get(),
+        ]);
     }
 
     public function renderProfileImageForm() {
