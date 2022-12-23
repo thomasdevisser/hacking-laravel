@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :pageTitle="$post->title">
   <article>
     <header>
       <div class="title">

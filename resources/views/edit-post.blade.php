@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pageTitle="Edit Post">
   <h2>Editing a post</h2>
   <a href="/posts/{{ $post->id }}">Back to post</a>
   <form action="/posts/{{ $post->id }}/edit" method="POST">

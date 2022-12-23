@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pageTitle="Create Post">
   <h2>Create a new post</h2>
   <form action="/create-post" method="POST">
     @csrf

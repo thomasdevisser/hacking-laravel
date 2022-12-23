@@ -3,15 +3,15 @@
   <section class="feed">
     @unless ($feed->isEmpty())
       @foreach ($feed as $post)
-      <article class="post">
-        <div class="meta">
-          <a href="/profile/{{ $post->user->username }}">
-            <img src="{{ $post->user->avatar }}" alt="Profile Image">
-            <p class="author">{{ $post->user->username }}</p>
-          </a>
-        </div>
-        <h3 class="post-title"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h3>
-      </article>
+        <article class="post">
+          <div class="meta">
+            <a href="/profile/{{ $post->user->username }}">
+              <img src="{{ $post->user->avatar }}" alt="Profile Image">
+              <p class="author">{{ $post->user->username }}</p>
+            </a>
+          </div>
+          <h3 class="post-title"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h3>
+        </article>
       @endforeach
 
       {{ $feed->links('vendor/pagination/semantic-ui') }}

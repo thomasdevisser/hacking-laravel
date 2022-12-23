@@ -1,7 +1,7 @@
-<x-layout>
-  @php
-    extract($sharedProfileData);
-  @endphp
+@php
+  extract($sharedProfileData);
+@endphp
+<x-layout pageTitle="{{ $username }}'s Profile">
   <div class="profile-header">
     <img src="{{ $avatar }}" alt="Profile Image">
     <h1>{{ $username }}</h1>
@@ -17,9 +17,9 @@
   </div>
 
   <div class="profile-tabs">
-    <a href="/profile/{{$username}}">Posts: {{ $postCount }}</a>
-    <a href="/profile/{{$username}}/followers">Followers: {{ $followerCount }}</a>
-    <a href="/profile/{{$username}}/following">Following: {{ $followsCount }}</a>
+    <a href="/profile/{{ $username }}">Posts: {{ $postCount }}</a>
+    <a href="/profile/{{ $username }}/followers">Followers: {{ $followerCount }}</a>
+    <a href="/profile/{{ $username }}/following">Following: {{ $followsCount }}</a>
   </div>
 
   <div class="profile-content">
