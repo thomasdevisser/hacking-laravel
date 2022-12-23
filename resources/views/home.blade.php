@@ -13,6 +13,8 @@
         <h3 class="post-title"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h3>
       </article>
       @endforeach
+
+      {{ $feed->links('vendor/pagination/semantic-ui') }}
     @else
       <p>There are no posts from users you follow. Try following more users.</p>
     @endunless
