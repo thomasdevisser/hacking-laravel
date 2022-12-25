@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SocialController;
 
 /*
@@ -54,3 +55,8 @@ Route::get('/profile/{user:username}/following', [UserController::class, 'render
  */
 Route::post('/follow/{user:username}', [SocialController::class, 'follow']);
 Route::post('/unfollow/{user:username}', [SocialController::class, 'unfollow']);
+
+/**
+ * Search Routes
+ */
+Route::get('/search/{term}', [SearchController::class, 'search']);
